@@ -1,5 +1,4 @@
 import {NextResponse} from "next/server";
-import OpenAI from "openai";
 import Groq from "groq-sdk";
 
 const systemPrompt =
@@ -23,28 +22,26 @@ const systemPrompt =
         ]
     }
     `
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY, dangerouslyAllowBrowser: true});
 
 export async function POST(req){
-    const openai = new OpenAI();
     const data = await req.text();
 
-    const completion = await openai.chat.completions
-        .create({
-            messages: [
-                {
-                    role: "system",
-                    content: systemPrompt,
-                },
-                {
-                    role: "user",
-                    content: data,
-                }
-            ],
-            model: "gpt-3.5-turbo",
-            response_format: {type: 'json_object'},
-        })
-
-    const flashcards = JSON.parse(completion.choices[0].message.content);
-
-    return NextResponse.json(flashcards.flashcard);
+    const completion = await groq.chat.completions.create({
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: data }
+        ],
+        model: "llama3-70b-8192",
+      });
+    
+    const content = completion.choices[0].message.content;
+    console.log("start of trimdata");
+    const trimdata = content.slice(content.indexOf('{'),content.lastIndexOf('}') + 1);
+    console.log(trimdata);
+    console.log("end of trimdata");
+    
+    const flashcards = JSON.parse(trimdata);
+    console.log("unable to parsh the data");
+    return NextResponse.json(flashcards.flashcards);
 }
