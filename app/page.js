@@ -1,165 +1,131 @@
-import React from 'react';
-import { Box, Button, Container, Grid, Typography } from '@mui/material';
+import Image from "next/image";
+//import getStripe from '@stripe/stripe-js'
+import {SignedIn, SignedOut, UserButton} from '@clerk/nextjs';
+import {AppBar, Box, Button, Container, Grid, Toolbar, Typography} from "@mui/material";
+import Head from "next/head";
 
 export default function Home() {
   return (
-    <Box>
-      {/* Hero Section */}
-      <Box
-        sx={{
-          backgroundColor: 'primary.main',
-          color: 'white',
-          py: 8,
-          textAlign: 'center',
-        }}
-      >
-        <Container maxWidth="md">
-          <Typography variant="h2" component="h1" gutterBottom>
-            Create Flashcards Effortlessly
-          </Typography>
-          <Typography variant="h5" paragraph>
-            Transform your text into smart flashcards with our AI-powered SaaS.
-          </Typography>
-          <Box sx={{ mt: 4 }}>
-            <Button
-              variant="contained"
-              color="secondary"
-              size="large"
-              sx={{ mr: 2 }}
-            >
-              Sign Up
-            </Button>
-            <Button variant="outlined" color="secondary" size="large">
-              Log In
-            </Button>
+      <Container maxWidth="100vw">
+        <Head>
+          <title>Flashcard SaaS</title>
+          <meta name={"description"} content={"Create flashcard from your text"}/>
+        </Head>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" style={{flexGrow: 1}}>
+              Flashcard SaaS
+            </Typography>
+            <SignedOut>
+              <Button color="inherit" href="/sign-in">Login</Button>
+              <Button color="inherit" href="/sign-up">Sign Up</Button>
+            </SignedOut>
+            <SignedIn>
+              <UserButton/>
+            </SignedIn>
+          </Toolbar>
+        </AppBar>
+
+
+          <Box sx={{
+              textAlign: 'center',
+              my: 4
+          }}>
+              <Typography variant="h2" gutterBottom>Welcome to Flashcard SaaS</Typography>
+              <Typography variant="h5" gutterBottom>
+                  {' '}
+                  The easiest way to make flashcards from your text
+              </Typography>
+              <Button variant="contained" color="primary" sx={{mt:2}}>
+                  Get Started
+              </Button>
           </Box>
-        </Container>
-      </Box>
+          <Box sx={{my: 6}}>
+              <Typography variant="h4" gutterBottom>
+                Features
+              </Typography>
+              <Grid container spacing={4}>
+                  <Grid item xs={12} md={4}>
+                      <Typography variant="h6" gutterBottom>Easy Text Input</Typography>
+                      <Typography>
+                          {' '}
+                          Simply input your text and let our software do the rest. Creating flashcards has never been easier
+                      </Typography>
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                      <Typography variant="h6" gutterBottom>Smart Flashcards</Typography>
+                      <Typography>
+                            {' '}
+                            Our AI intelligently breaks down your text into concise flashcards, perfect for studying.
+                      </Typography>
+                  </Grid>
+                  <Grid item xs={12} md={4}>
+                      <Typography variant="h6" gutterBottom>Accessible Anywhere</Typography>
+                      <Typography>
+                          {' '}
+                          Access your flashcards from any device, at any time. Study on the go with ease
+                      </Typography>
+                  </Grid>
+              </Grid>
+          </Box>
+          <Box sx={{my: 6, textAlign: 'center'}}>
+              <Typography variant="h4" gutterBottom>
+                  Pricing
+              </Typography>
+              <Grid container spacing={4}>
+                  <Grid item xs={12} md={6}>
+                      <Box sx={{
+                          p: 3,
+                          border: '1px solid',
+                          borderColor: 'gray.300',
+                          borderRadius: 2
+                      }}>
+                          <Typography variant="h5" gutterBottom>Basic</Typography>
+                          <Typography variant="h6" gutterBottom>$5 / month</Typography>
+                          <Typography>
+                              {' '}
+                              Access to basic flashcard features and limited storage.
+                          </Typography>
+                          <Button variant="contained" color="primary" sx={{mt: 2}}>
+                              Choose basic
+                          </Button>
+                      </Box>
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                      <Box sx={{
+                          p: 3,
+                          border: '1px solid',
+                          borderColor: 'gray.300',
+                          borderRadius: 2
+                      }}>
+                          <Typography variant="h5" gutterBottom>Pro</Typography>
+                          <Typography variant="h6" gutterBottom>$10 / month</Typography>
+                          <Typography>
+                              {' '}
+                              Unlimited flashcard features and storage, with priority support.
+                          </Typography>
+                          <Button variant="contained" color="primary" sx={{mt: 2}}>
+                              Choose basic
+                          </Button>
+                      </Box>
+                  </Grid>
+                  {/*<Grid item xs={12} md={4}>*/}
+                  {/*    <Typography variant="h6">Smart Flashcards</Typography>*/}
+                  {/*    <Typography>*/}
+                  {/*        {' '}*/}
+                  {/*        Our AI intelligently breaks down your text into concise flashcards, perfect for studying.*/}
+                  {/*    </Typography>*/}
+                  {/*</Grid>*/}
+                  {/*<Grid item xs={12} md={4}>*/}
+                  {/*    <Typography variant="h6">Accessible Anywhere</Typography>*/}
+                  {/*    <Typography>*/}
+                  {/*        {' '}*/}
+                  {/*        Access your flashcards from any device, at any time. Study on the go with ease*/}
+                  {/*    </Typography>*/}
+                  {/*</Grid>*/}
+              </Grid>
 
-      {/* Features Section */}
-      <Box sx={{ py: 8 }}>
-        <Container maxWidth="lg">
-          <Typography variant="h4" component="h2" gutterBottom align="center">
-            Key Features
-          </Typography>
-          <Grid container spacing={4} sx={{ mt: 4 }}>
-            <Grid item xs={12} sm={6} md={4}>
-              <Typography variant="h6" gutterBottom>
-                AI-Powered Flashcards
-              </Typography>
-              <Typography variant="body1">
-                Automatically generate flashcards from any text input using our
-                advanced AI algorithms.
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Typography variant="h6" gutterBottom>
-                Easy to Use
-              </Typography>
-              <Typography variant="body1">
-                A user-friendly interface that allows you to create and manage
-                your flashcards with ease.
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Typography variant="h6" gutterBottom>
-                Customizable Decks
-              </Typography>
-              <Typography variant="body1">
-                Organize your flashcards into decks and customize them to fit
-                your learning style.
-              </Typography>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Pricing Section */}
-      <Box sx={{ py: 8, backgroundColor: 'grey.100' }}>
-        <Container maxWidth="md">
-          <Typography variant="h4" component="h2" gutterBottom align="center">
-            Pricing Plans
-          </Typography>
-          <Typography variant="h6" paragraph align="center">
-            Choose the plan that’s right for you.
-          </Typography>
-          <Grid container spacing={4} sx={{ mt: 4 }}>
-            <Grid item xs={12} sm={6} md={4}>
-              <Box
-                sx={{
-                  backgroundColor: 'white',
-                  p: 4,
-                  borderRadius: 2,
-                  textAlign: 'center',
-                  boxShadow: 1,
-                }}
-              >
-                <Typography variant="h6" gutterBottom>
-                  Free Plan
-                </Typography>
-                <Typography variant="h4" gutterBottom>
-                  $0/month
-                </Typography>
-                <Typography variant="body1" paragraph>
-                  Basic features with limited flashcard creation.
-                </Typography>
-                <Button variant="contained" color="primary">
-                  Sign Up
-                </Button>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Box
-                sx={{
-                  backgroundColor: 'primary.main',
-                  color: 'white',
-                  p: 4,
-                  borderRadius: 2,
-                  textAlign: 'center',
-                  boxShadow: 1,
-                }}
-              >
-                <Typography variant="h6" gutterBottom>
-                  Pro Plan
-                </Typography>
-                <Typography variant="h4" gutterBottom>
-                  $9.99/month
-                </Typography>
-                <Typography variant="body1" paragraph>
-                  Unlimited flashcards and premium features.
-                </Typography>
-                <Button variant="contained" color="secondary">
-                  Sign Up
-                </Button>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Box
-                sx={{
-                  backgroundColor: 'white',
-                  p: 4,
-                  borderRadius: 2,
-                  textAlign: 'center',
-                  boxShadow: 1,
-                }}
-              >
-                <Typography variant="h6" gutterBottom>
-                  Enterprise Plan
-                </Typography>
-                <Typography variant="h4" gutterBottom>
-                  Contact Us
-                </Typography>
-                <Typography variant="body1" paragraph>
-                  Custom solutions for large organizations.
-                </Typography>
-                <Button variant="contained" color="primary">
-                  Contact Sales
-                </Button>
-              </Box>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-    </Box>
+          </Box>
+      </Container>
   );
 }
