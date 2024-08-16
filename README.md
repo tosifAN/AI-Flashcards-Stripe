@@ -59,3 +59,11 @@ AI Flashcards & Stripe is a dynamic, AI-powered flashcard application that utili
         <p><strong>Carlo Emmanuel</strong></p>
     </a>
 </div>
+
+## 👥 **Contributors**
+
+- **[Tosif Ansari](https://github.com/tosifAN)**
+- **[harsha chandolu](https://github.com/harshachandolu)**
+- **[Carlo Uy](https://github.com/Carlo-Emmanuel)**
+
+---
