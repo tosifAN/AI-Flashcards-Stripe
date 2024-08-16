@@ -36,7 +36,7 @@ export default function Home() {
                   {' '}
                   The easiest way to make flashcards from your text
               </Typography>
-              <Button variant="contained" color="primary" sx={{mt:2}}>
+              <Button variant="contained" color="primary" sx={{mt:2}} href="/generate">
                   Get Started
               </Button>
           </Box>
@@ -102,7 +102,7 @@ export default function Home() {
                           <Typography variant="h6" gutterBottom>$10 / month</Typography>
                           <Typography>
                               {' '}
-                              Unlimited flashcard features and storage, with priority support.
+                             Unlimited flashcard features and storage, with priority support.
                           </Typography>
                           <Button variant="contained" color="primary" sx={{mt: 2}}>
                               Choose basic
