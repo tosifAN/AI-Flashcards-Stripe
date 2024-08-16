@@ -1,8 +1,6 @@
-# AI Flashcards & Stripe
+# 🚀 **Project 4: AI Flashcards & Stripe**
 
 ![Project Banner](https://via.placeholder.com/1200x300.png?text=AI+Flashcards+%26+Stripe)
-
-### 🚀 **Project 4: AI Flashcards & Stripe**
 
 ---
 
