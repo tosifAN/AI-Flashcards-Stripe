@@ -31,6 +31,16 @@ export default function Home() {
         <Head>
           <title>Flashcard SaaS</title>
           <meta name={"description"} content={"Create flashcard from your text"}/>
+
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-85TWMK32WY"></script>
+          <script dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-85TWMK32WY');
+            `,
+          }} />
         </Head>
         <AppBar position="static">
           <Toolbar>
@@ -46,8 +56,6 @@ export default function Home() {
             </SignedIn>
           </Toolbar>
         </AppBar>
-
-
           <Box sx={{
               textAlign: 'center',
               my: 4
@@ -132,22 +140,7 @@ export default function Home() {
                           </Button>
                       </Box>
                   </Grid>
-                  {/*<Grid item xs={12} md={4}>*/}
-                  {/*    <Typography variant="h6">Smart Flashcards</Typography>*/}
-                  {/*    <Typography>*/}
-                  {/*        {' '}*/}
-                  {/*        Our AI intelligently breaks down your text into concise flashcards, perfect for studying.*/}
-                  {/*    </Typography>*/}
-                  {/*</Grid>*/}
-                  {/*<Grid item xs={12} md={4}>*/}
-                  {/*    <Typography variant="h6">Accessible Anywhere</Typography>*/}
-                  {/*    <Typography>*/}
-                  {/*        {' '}*/}
-                  {/*        Access your flashcards from any device, at any time. Study on the go with ease*/}
-                  {/*    </Typography>*/}
-                  {/*</Grid>*/}
               </Grid>
-
           </Box>
       </Container>
   );
