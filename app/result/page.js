@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import getStripe from "@/utils/get-stripe"
+import getStripe from "../../utils/get-stripe"
 import { useSearchParams } from "next/navigation"
 import { Container, CircularProgress, Typography, Box } from "@mui/material"
 
@@ -109,3 +109,6 @@ const ResultPage = () => {
         </Container>
       )
   }
+
+
+export default ResultPage;

@@ -3,13 +3,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDIsDvAzZ-yYIW4MdIkzai86IH0ZVC7eaE",
-  authDomain: "flashcardsaas-2ddea.firebaseapp.com",
-  projectId: "flashcardsaas-2ddea",
-  storageBucket: "flashcardsaas-2ddea.appspot.com",
-  messagingSenderId: "933651792988",
-  appId: "1:933651792988:web:6778ace93a72d3b9d91299",
-  measurementId: "G-WHDZFSQTJ7"
+  apiKey: "AIzaSyCW0b3cvKixQhLlluuegL7Ov4Ea_g7paS0",
+  authDomain: "tosif-universe-786.firebaseapp.com",
+  projectId: "tosif-universe-786",
+  storageBucket: "tosif-universe-786.appspot.com",
+  messagingSenderId: "809372077838",
+  appId: "1:809372077838:web:c3afcc8014a2438cca515f",
+  measurementId: "G-85TWMK32WY"
 };
 
 const app = initializeApp(firebaseConfig);

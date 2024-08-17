@@ -1,10 +1,31 @@
+'use client'
 import Image from "next/image";
 //import getStripe from '@stripe/stripe-js'
 import {SignedIn, SignedOut, UserButton} from '@clerk/nextjs';
 import {AppBar, Box, Button, Container, Grid, Toolbar, Typography} from "@mui/material";
 import Head from "next/head";
+import getStripe from "../utils/get-stripe"
+
 
 export default function Home() {
+    const handleSubmit = async (model) => {
+        const checkoutSession = await fetch("/api/checkout_sessions", {
+          method: "POST",
+          headers: { origin: "http://localhost:3000"},
+          body: JSON.stringify({model: model})
+        });
+        const checkoutSessionJson = await checkoutSession.json();
+    
+        const stripe = await getStripe();
+        const { error } = await stripe.redirectToCheckout({
+          sessionId: checkoutSessionJson.id,
+        });
+    
+        if (error) {
+          console.warn(error.message);
+        }
+      };
+    
   return (
       <Container maxWidth="100vw">
         <Head>
@@ -86,7 +107,8 @@ export default function Home() {
                               {' '}
                               Access to basic flashcard features and limited storage.
                           </Typography>
-                          <Button variant="contained" color="primary" sx={{mt: 2}}>
+                          <Button  onClick={() => handleSubmit("basic")}
+                          variant="contained" color="primary" sx={{mt: 2}}>
                               Choose basic
                           </Button>
                       </Box>
@@ -104,8 +126,9 @@ export default function Home() {
                               {' '}
                              Unlimited flashcard features and storage, with priority support.
                           </Typography>
-                          <Button variant="contained" color="primary" sx={{mt: 2}}>
-                              Choose basic
+                          <Button   onClick={() => handleSubmit("pro")}
+                          variant="contained" color="primary" sx={{mt: 2}}>
+                              Choose pro
                           </Button>
                       </Box>
                   </Grid>
